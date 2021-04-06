@@ -1,6 +1,6 @@
 # Default ignored files
 /shelf/
-.idea/
-.allure/
-target
-build
+/.allure/
+/target/
+/.idea/
+/build/
