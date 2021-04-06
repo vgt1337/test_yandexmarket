@@ -1,4 +1,4 @@
-package org.tn;
+package org.tn.Settings;
 
 public class TestSettings
 {

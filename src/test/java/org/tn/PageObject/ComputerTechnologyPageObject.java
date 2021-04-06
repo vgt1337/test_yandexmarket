@@ -1,7 +1,9 @@
-package org.tn;
+package org.tn.PageObject;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.tn.Methods.CheckElement;
+import org.tn.Methods.WaitUntil;
 
 public class ComputerTechnologyPageObject
 {
@@ -14,9 +16,9 @@ public class ComputerTechnologyPageObject
         _webDriver = webDriver;
     }
 
-    public void GoToNotebooksPage()
+    public void goToNotebooksPage()
     {
-        WaitUntil.WaitElementUniversal(_webDriver, _notebookButton, 10);
-        CheckElement.FindSingleElementAndClick(_webDriver, _notebookButton);
+        WaitUntil.waitElementUniversal(_webDriver, _notebookButton, 10);
+        CheckElement.findSingleElementAndClick(_webDriver, _notebookButton);
     }
 }

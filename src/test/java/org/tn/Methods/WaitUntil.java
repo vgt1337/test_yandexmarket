@@ -1,4 +1,4 @@
-package org.tn;
+package org.tn.Methods;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NotFoundException;
@@ -11,7 +11,7 @@ import java.time.Duration;
 
 public class WaitUntil
 {
-    public static void WaitSomeInterval(Integer seconds)
+    public static void waitSomeInterval(Integer seconds)
     {
         try
         {
@@ -23,7 +23,7 @@ public class WaitUntil
         }
     }
 
-    public static void ShouldLocate(WebDriver webDriver, String location)
+    public static void shouldLocate(WebDriver webDriver, String location)
     {
         try
         {
@@ -35,18 +35,18 @@ public class WaitUntil
         }
     }
 
-    public static void WaitElementUniversal(WebDriver webDriver, By locator, Integer seconds)
+    public static void waitElementUniversal(WebDriver webDriver, By locator, Integer seconds)
     {
         new WebDriverWait(webDriver, Duration.ofSeconds(seconds)).until(ExpectedConditions.visibilityOfElementLocated(locator));
         new WebDriverWait(webDriver, Duration.ofSeconds(seconds)).until(ExpectedConditions.elementToBeClickable(locator));
     }
 
-    public static void WaitElementVisible(WebDriver webDriver, By locator, Integer seconds)
+    public static void waitElementVisible(WebDriver webDriver, By locator, Integer seconds)
     {
         new WebDriverWait(webDriver, Duration.ofSeconds(seconds)).until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 
-    public static void WaitElementExists(WebDriver webDriver, By locator, Integer seconds )
+    public static void waitElementExists(WebDriver webDriver, By locator, Integer seconds )
     {
         new WebDriverWait(webDriver, Duration.ofSeconds(seconds)).until(ExpectedConditions.	presenceOfElementLocated(locator));
     }

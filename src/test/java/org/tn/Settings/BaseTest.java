@@ -1,4 +1,4 @@
-package org.tn;
+package org.tn.Settings;
 
 import org.junit.After;
 import org.junit.Before;
