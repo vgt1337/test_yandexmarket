@@ -8,6 +8,11 @@ public class MainTest extends BaseTest
     public void Test()
     {
         WaitUntil.ShouldLocate( _webDriver, TestSettings.HostPrefix);
-    }
 
+        StartPageObject startPageObject = new StartPageObject(_webDriver);
+        startPageObject.GoToComputersPage();
+
+        ComputerTechnologyPageObject technoListPageObject = new ComputerTechnologyPageObject(_webDriver);
+        technoListPageObject.GoToNotebooksPage();
+    }
 }

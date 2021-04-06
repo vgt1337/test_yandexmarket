@@ -11,6 +11,18 @@ import java.time.Duration;
 
 public class WaitUntil
 {
+    public static void WaitSomeInterval(Integer seconds)
+    {
+        try
+        {
+            Thread.sleep(seconds*1000);
+        }
+        catch (InterruptedException ex)
+        {
+            ex.printStackTrace();
+        }
+    }
+
     public static void ShouldLocate(WebDriver webDriver, String location)
     {
         try

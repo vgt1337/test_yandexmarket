@@ -7,7 +7,7 @@ import org.openqa.selenium.WebDriver;
 
 public class CheckElement
 {
-    public Boolean FindSingleElement(WebDriver webdriver, By locator)
+    public static Boolean FindSingleElement(WebDriver webdriver, By locator)
     {
         try
         {
@@ -21,11 +21,11 @@ public class CheckElement
 
         catch (StaleElementReferenceException ex)
         {
-            return (this.FindSingleElement(webdriver, locator));
+            return (FindSingleElement(webdriver, locator));
         }
     }
 
-    public Boolean FindSingleElementAndClick(WebDriver webdriver, By locator)
+    public static Boolean FindSingleElementAndClick(WebDriver webdriver, By locator)
     {
         try
         {
@@ -39,11 +39,11 @@ public class CheckElement
         }
         catch (StaleElementReferenceException ex)
         {
-            return (this.FindSingleElementAndClick(webdriver, locator));
+            return (FindSingleElementAndClick(webdriver, locator));
         }
     }
 
-    public Boolean FindSingleElementAndSendKeys(WebDriver webdriver, By locator, String value)
+    public static Boolean FindSingleElementAndSendKeys(WebDriver webdriver, By locator, String value)
     {
         try
         {
@@ -58,7 +58,7 @@ public class CheckElement
 
         catch (StaleElementReferenceException ex)
         {
-            return (this.FindSingleElementAndSendKeys(webdriver, locator, value));
+            return (FindSingleElementAndSendKeys(webdriver, locator, value));
         }
     }
 }
