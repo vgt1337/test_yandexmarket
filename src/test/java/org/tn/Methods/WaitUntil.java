@@ -6,10 +6,11 @@ import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.tn.Settings.BaseTest;
 
 import java.time.Duration;
 
-public class WaitUntil
+public class WaitUntil extends BaseTest
 {
     public static void waitSomeInterval(Integer seconds)
     {
@@ -23,7 +24,7 @@ public class WaitUntil
         }
     }
 
-    public static void shouldLocate(WebDriver webDriver, String location)
+    public void shouldLocate(String location)
     {
         try
         {

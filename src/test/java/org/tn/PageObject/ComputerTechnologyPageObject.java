@@ -2,23 +2,21 @@ package org.tn.PageObject;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.tn.Methods.CheckElement;
+import org.tn.Methods.PageManager;
 import org.tn.Methods.WaitUntil;
 
-public class ComputerTechnologyPageObject
+public class ComputerTechnologyPageObject extends PageManager
 {
-    private WebDriver _webDriver;
 
-    private final By _notebookButton = By.xpath("//div[contains(text(),'Ноутбуки')]/parent::div");
+    @FindBy(xpath = "//div[contains(text(),'Ноутбуки')]/parent::div")
+    private WebElement notebookButton;
 
-    public ComputerTechnologyPageObject(WebDriver webDriver)
-    {
-        _webDriver = webDriver;
-    }
 
     public void goToNotebooksPage()
     {
-        WaitUntil.waitElementUniversal(_webDriver, _notebookButton, 10);
-        CheckElement.findSingleElementAndClick(_webDriver, _notebookButton);
+        waitAndClickElement(notebookButton, 10);
     }
 }

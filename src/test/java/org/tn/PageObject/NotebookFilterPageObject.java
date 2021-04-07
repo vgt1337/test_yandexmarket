@@ -2,30 +2,33 @@ package org.tn.PageObject;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.tn.Methods.CheckElement;
+import org.tn.Methods.PageManager;
 import org.tn.Methods.WaitUntil;
 import org.tn.Settings.NotebookFilterSpecifications;
 
-public class NotebookFilterPageObject
+public class NotebookFilterPageObject extends PageManager
 {
-    private WebDriver _webDriver;
 
     @FindBy(xpath = "//label[contains(text(), 'Цена, ₽ до')]/parent::span/descendant::input[@type='text']")
-    private final By _tillPriceField = By.xpath("//label[contains(text(), 'Цена, ₽ до')]/parent::span/descendant::input[@type='text']");
+    private WebElement tillPriceField;
 
-    private final By _manufacturerListButton = By.xpath("");
-    private final By _HPNameButton = By.xpath("//div[@data-tid='d03e142c ef8a0c6e eaa8d39b']/descendant::span[contains(text(), '"
+    @FindBy(xpath = "")
+    private WebElement manufacturerListButton;
+
+    private final By HPNameButton = By.xpath("//div[@data-tid='d03e142c ef8a0c6e eaa8d39b']/descendant::span[contains(text(), '"
             + NotebookFilterSpecifications.ModelsName[0] +"')]");
-    private final By _PrestigioNameButton = By.xpath("//div[@data-tid='d03e142c ef8a0c6e eaa8d39b']/descendant::span[contains(text(), '"
+    private final By PrestigioNameButton = By.xpath("//div[@data-tid='d03e142c ef8a0c6e eaa8d39b']/descendant::span[contains(text(), '"
             + NotebookFilterSpecifications.ModelsName[1] +"')]");
-    private final By _whiteColorButton = By.xpath("");
-    private final By _blackColorButton = By.xpath("");
 
-    public NotebookFilterPageObject(WebDriver webDriver)
-    {
-        _webDriver = webDriver;
-    }
+    @FindBy(xpath = "")
+    private WebElement whiteColorButton;
+
+    @FindBy(xpath = "")
+    private WebElement blackColorButton;
+
 
     public void applyFilter()
     {
@@ -38,8 +41,7 @@ public class NotebookFilterPageObject
 
     public void applyTillPriceFilter(String price)
     {
-        WaitUntil.waitElementUniversal(_webDriver,_tillPriceField, 10);
-        CheckElement.findSingleElementAndSendKeys(_webDriver, _tillPriceField, price);
+        waitElementAndSendKeys(tillPriceField, 10, price);
     }
 
     public void applyNotebookModelHPFilter(String notebookmodel)
@@ -48,12 +50,10 @@ public class NotebookFilterPageObject
         switch (notebookmodel)
         {
             case "HP":
-                WaitUntil.waitElementUniversal(_webDriver,_HPNameButton, 10);
-                CheckElement.findSingleElementAndClick(_webDriver, _HPNameButton);
+                waitAndClickLocator(HPNameButton, 10);
                 break;
             case "Prestigio":
-                WaitUntil.waitElementUniversal(_webDriver,_PrestigioNameButton, 10);
-                CheckElement.findSingleElementAndClick(_webDriver, _PrestigioNameButton);
+                waitAndClickLocator(PrestigioNameButton, 10);
                 break;
         }
     }

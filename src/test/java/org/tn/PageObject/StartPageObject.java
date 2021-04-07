@@ -2,23 +2,21 @@ package org.tn.PageObject;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.tn.Methods.CheckElement;
+import org.tn.Methods.PageManager;
 import org.tn.Methods.WaitUntil;
 
-public class StartPageObject
+public class StartPageObject extends PageManager
 {
-    private WebDriver _webDriver;
+    @FindBy(xpath ="//span[contains(text(),'Компьютеры')]")
+    private WebElement computersButton ;
 
-    private final By _computersButton = By.xpath("//span[contains(text(),'Компьютеры')]");
 
-    public StartPageObject(WebDriver webDriver)
-    {
-        _webDriver = webDriver;
-    }
 
     public void goToComputersPage()
     {
-        WaitUntil.waitElementUniversal(_webDriver, _computersButton, 10);
-        CheckElement.findSingleElementAndClick(_webDriver, _computersButton);
+        waitAndClickElement(computersButton, 10);
     }
 }
