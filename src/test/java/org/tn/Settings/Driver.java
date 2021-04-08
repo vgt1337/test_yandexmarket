@@ -1,8 +1,11 @@
 package org.tn.Settings;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 
 public class Driver
 {
@@ -13,15 +16,14 @@ public class Driver
         switch (TestSettings.BrowserSelect)
         {
             case "chrome":
-                System.setProperty("webdriver.chrome.driver", "C:/Users/vgt_/IdeaProjects/test_yandexmarket/chromedriver.exe");
-                webDriver = new ChromeDriver();
+                WebDriverManager.chromedriver().setup();
+                ChromeOptions сhromeoptions = new ChromeOptions();
+                webDriver = new ChromeDriver(сhromeoptions);
                 break;
-            case "firefox": webDriver = new FirefoxDriver();
-                System.setProperty("webdriver.firefox.driver", "C:/Users/vgt_/IdeaProjects/test_yandexmarket/geckodriver.exe");
-                break;
-            default:
-                System.setProperty("webdriver.chrome.driver", "C:/Users/vgt_/IdeaProjects/test_yandexmarket/chromedriver.exe");
-                webDriver = new ChromeDriver();
+            case "firefox":
+                WebDriverManager.firefoxdriver().setup();
+                FirefoxOptions firefoxoptions = new FirefoxOptions();
+                webDriver = new FirefoxDriver(firefoxoptions);
                 break;
         }
         webDriver.manage().window().maximize();
