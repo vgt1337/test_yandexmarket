@@ -1,6 +1,5 @@
 package org.tn.Methods;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.tn.PageObject.ComputerTechnologyPageObject;
 import org.tn.PageObject.NotebookFilterPageObject;
@@ -10,14 +9,11 @@ import org.tn.Settings.TestSettings;
 
 public class Tests extends BaseTest
 {
-    private final PageManager pageManager = PageFactory.initElements(BaseTest.webDriver, PageManager.class);
-    private final PageElementsManager pageElementsManager = PageFactory.initElements(BaseTest.webDriver, PageElementsManager.class);
-    private final StartPageObject startPageObject = PageFactory.initElements(BaseTest.webDriver, StartPageObject.class);
-    private final ComputerTechnologyPageObject computerTechnologyPageObject = new ComputerTechnologyPageObject();
-    private final NotebookFilterPageObject notebookFilterPageObject = new NotebookFilterPageObject();
+
 
     public void shouldLocate()
     {
+        PageManager pageManager = PageFactory.initElements(BaseTest.webDriver, PageManager.class);
         pageManager.shouldLocate(TestSettings.HostPrefix);
     }
     public void goToComputersPage()
@@ -44,9 +40,9 @@ public class Tests extends BaseTest
         notebookFilterPage.applyTillPriceFilter(price);
     }
 
-    public void applyNotebookModelHPFilter(String notebookmodel)
+    public void applyNotebookModelFilter(String notebookmodel)
     {
         NotebookFilterPageObject notebookFilterPage = PageFactory.initElements(BaseTest.webDriver, NotebookFilterPageObject.class);
-        notebookFilterPage.applyNotebookModelHPFilter(notebookmodel);
+        notebookFilterPage.applyNotebookModelFilter(notebookmodel);
     }
 }

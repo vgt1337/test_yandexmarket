@@ -1,12 +1,9 @@
 package org.tn.PageObject;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.tn.Methods.CheckElement;
 import org.tn.Methods.PageManager;
-import org.tn.Methods.WaitUntil;
 import org.tn.Settings.NotebookFilterSpecifications;
 
 public class NotebookFilterPageObject extends PageManager
@@ -35,16 +32,17 @@ public class NotebookFilterPageObject extends PageManager
         applyTillPriceFilter(NotebookFilterSpecifications.TillPrice);
         for (String i:NotebookFilterSpecifications.ModelsName)
         {
-            applyNotebookModelHPFilter(i);
+            applyNotebookModelFilter(i);
         }
     }
 
     public void applyTillPriceFilter(String price)
     {
+        findSingleElementAndClear(tillPriceField);
         waitElementAndSendKeys(tillPriceField, 10, price);
     }
 
-    public void applyNotebookModelHPFilter(String notebookmodel)
+    public void applyNotebookModelFilter(String notebookmodel)
     {
 
         switch (notebookmodel)

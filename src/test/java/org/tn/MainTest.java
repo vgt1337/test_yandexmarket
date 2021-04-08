@@ -1,15 +1,13 @@
 package org.tn;
 
-
-import org.junit.Test;
-import org.openqa.selenium.WebDriver;
+import org.testng.annotations.Test;
+import org.tn.Methods.PageManager;
 import org.tn.Methods.Tests;
-import org.tn.Methods.WaitUntil;
 
 
 public class MainTest extends Tests
 {
-    @Test
+    @Test(alwaysRun= true)
     public void Test()
     {
         shouldLocate();
@@ -17,6 +15,6 @@ public class MainTest extends Tests
         goToNotebooksPage();
         applyFilter();
 
-        //WaitUntil.waitSomeInterval(5);
+        PageManager.waitSomeInterval(10);
     }
 }

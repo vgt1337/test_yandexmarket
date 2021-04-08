@@ -141,4 +141,42 @@ public class PageElementsManager extends BaseTest
             return (findSingleElementAndSendKeys(element, value));
         }
     }
+
+    public Boolean findSingleElementAndClear(WebElement element)
+    {
+        try
+        {
+            element.clear();
+            return true;
+        }
+
+        catch (NoSuchElementException ex)
+        {
+            return false;
+        }
+
+        catch (StaleElementReferenceException ex)
+        {
+            return (findSingleElementAndClear(element));
+        }
+    }
+
+    public Boolean findSingleElementAndClear(By locator)
+    {
+        try
+        {
+            BaseTest.webDriver.findElement(locator).clear();
+            return true;
+        }
+
+        catch (NoSuchElementException ex)
+        {
+            return false;
+        }
+
+        catch (StaleElementReferenceException ex)
+        {
+            return (findSingleElementAndClear(locator));
+        }
+    }
 }
