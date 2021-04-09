@@ -1,9 +1,9 @@
 Feature: Проведение UI-тестирования Яндекс Маркета
 
   Scenario: Просмотр моделей ноутбоков по заданным фильтрам
-    Given Переход на главную страницу
-    Given Переход на страницу Компьютерная техника
-    When Переход на страницу Ноутбуки
-    Then Применение фильтра цены "30000"
-    And Применение фильтра модели HP "HP"
-    And Применение фильтра модели Prestigio "Prestigio"
+    Given Go To Page Computer Technology
+    When Go To Page Notebook
+    Then Apply Filter Price "price"
+    And Apply Filter Model "model1", "model2"
+    And Apply Filter Color "color1", "color2"
+

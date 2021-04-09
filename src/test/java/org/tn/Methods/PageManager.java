@@ -3,7 +3,7 @@ package org.tn.Methods;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.tn.Settings.BaseTest;
+import org.tn.Settings.Driver;
 
 import java.time.Duration;
 
@@ -14,7 +14,7 @@ public class PageManager extends PageElementsManager
     {
         try
         {
-            new WebDriverWait(BaseTest.webDriver, Duration.ofSeconds(10)).until(ExpectedConditions.urlContains((location)));
+            new WebDriverWait(Driver.webDriver, Duration.ofSeconds(10)).until(ExpectedConditions.urlContains((location)));
         }
         catch (TimeoutException ex)
         {
@@ -54,7 +54,7 @@ public class PageManager extends PageElementsManager
 
     public void waitAndClickLocator(By locator, Integer seconds)
     {
-        waitLocatorUniversal(locator, seconds);
+        waitLocatorClickable(locator, seconds);
         findSingleLocatorAndClick(locator);
     }
 

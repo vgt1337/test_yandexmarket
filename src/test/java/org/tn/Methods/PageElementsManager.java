@@ -3,18 +3,18 @@ package org.tn.Methods;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.tn.Settings.BaseTest;
+import org.tn.Settings.Driver;
 
 import java.time.Duration;
 
-public class PageElementsManager extends BaseTest
+public class PageElementsManager extends Driver
 {
 
     public void shouldLocate(String location)
     {
         try
         {
-            new WebDriverWait(BaseTest.webDriver, Duration.ofSeconds(10)).until(ExpectedConditions.urlContains((location)));
+            new WebDriverWait(Driver.webDriver, Duration.ofSeconds(10)).until(ExpectedConditions.urlContains((location)));
         }
         catch (TimeoutException ex)
         {
@@ -24,8 +24,13 @@ public class PageElementsManager extends BaseTest
 
     public void waitLocatorUniversal(By locator, Integer seconds)
     {
-        new WebDriverWait(BaseTest.webDriver, Duration.ofSeconds(seconds)).until(ExpectedConditions.visibilityOfElementLocated(locator));
-        new WebDriverWait(BaseTest.webDriver, Duration.ofSeconds(seconds)).until(ExpectedConditions.elementToBeClickable(locator));
+        new WebDriverWait(Driver.webDriver, Duration.ofSeconds(seconds)).until(ExpectedConditions.visibilityOfElementLocated(locator));
+        new WebDriverWait(Driver.webDriver, Duration.ofSeconds(seconds)).until(ExpectedConditions.elementToBeClickable(locator));
+    }
+
+    public void waitLocatorClickable(By locator, Integer seconds)
+    {
+        new WebDriverWait(Driver.webDriver, Duration.ofSeconds(seconds)).until(ExpectedConditions.elementToBeClickable(locator));
     }
 
     public void waitElementUniversal(WebElement element, Integer seconds)
@@ -36,24 +41,25 @@ public class PageElementsManager extends BaseTest
 
     public void waitLocatorVisible(By locator, Integer seconds)
     {
-        new WebDriverWait(BaseTest.webDriver, Duration.ofSeconds(seconds)).until(ExpectedConditions.visibilityOfElementLocated(locator));
+        new WebDriverWait(Driver.webDriver, Duration.ofSeconds(seconds)).until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
+
 
     public void waitElementVisible(WebElement element, Integer seconds)
     {
-        new WebDriverWait(BaseTest.webDriver, Duration.ofSeconds(seconds)).until(ExpectedConditions.visibilityOf(element));
+        new WebDriverWait(Driver.webDriver, Duration.ofSeconds(seconds)).until(ExpectedConditions.visibilityOf(element));
     }
 
     public void waitLocatorExists(By locator, Integer seconds )
     {
-        new WebDriverWait(BaseTest.webDriver, Duration.ofSeconds(seconds)).until(ExpectedConditions.	presenceOfElementLocated(locator));
+        new WebDriverWait(Driver.webDriver, Duration.ofSeconds(seconds)).until(ExpectedConditions.presenceOfElementLocated(locator));
     }
 
     public Boolean findSingleLocator(By locator)
     {
         try
         {
-            BaseTest.webDriver.findElement(locator);
+            Driver.webDriver.findElement(locator);
             return true;
         }
         catch (NoSuchElementException ex)
@@ -72,7 +78,7 @@ public class PageElementsManager extends BaseTest
     {
         try
         {
-            BaseTest.webDriver.findElement(locator).click();
+            Driver.webDriver.findElement(locator).click();
             return true;
         }
 
@@ -108,7 +114,7 @@ public class PageElementsManager extends BaseTest
     {
         try
         {
-            BaseTest.webDriver.findElement(locator).sendKeys(value);
+            Driver.webDriver.findElement(locator).sendKeys(value);
             return true;
         }
 
@@ -165,7 +171,7 @@ public class PageElementsManager extends BaseTest
     {
         try
         {
-            BaseTest.webDriver.findElement(locator).clear();
+            Driver.webDriver.findElement(locator).clear();
             return true;
         }
 

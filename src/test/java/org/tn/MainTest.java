@@ -1,16 +1,13 @@
 package org.tn;
 
+import io.cucumber.testng.AbstractTestNGCucumberTests;
 import org.testng.annotations.Test;
 import io.cucumber.testng.CucumberOptions;
 
-@CucumberOptions(features = {"src/test/java/org.tn/resourses"},
-        glue = {"steps"}, plugin = {"pretty"})
+@CucumberOptions(features = {"src/test/java/resourses"},
+        glue = {"org/tn/steps"}, plugin = {"pretty"})
 
-public class MainTest
+public class MainTest extends AbstractTestNGCucumberTests
 {
-    @Test(alwaysRun= true)
-    public void Test()
-    {
 
-    }
 }
