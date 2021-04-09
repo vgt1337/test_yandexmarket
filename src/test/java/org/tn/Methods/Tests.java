@@ -7,7 +7,7 @@ import org.tn.PageObject.StartPageObject;
 import org.tn.Settings.BaseTest;
 import org.tn.Settings.TestSettings;
 
-public class Tests extends BaseTest
+public class Tests extends PageManager
 {
 
 

@@ -1,18 +1,16 @@
 package org.tn;
 
 import org.testng.annotations.Test;
-import org.tn.Methods.PageManager;
-import org.tn.Methods.Tests;
+import io.cucumber.testng.CucumberOptions;
 
+@CucumberOptions(features = {"src/test/java/org.tn/resourses"},
+        glue = {"steps"}, plugin = {"pretty"})
 
-public class MainTest extends Tests
+public class MainTest
 {
     @Test(alwaysRun= true)
     public void Test()
     {
-        shouldLocate();
-        goToComputersPage();
-        goToNotebooksPage();
-        applyFilter();
+
     }
 }

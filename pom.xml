@@ -27,6 +27,10 @@
                     <argLine>
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
                     </argLine>
+
+                    <systemPropertyVariables>
+                        <allure.results.directory>${project.build.directory}\allure-results</allure.results.directory>
+                    </systemPropertyVariables>
                 </configuration>
                 <dependencies>
                     <dependency>
@@ -44,8 +48,7 @@
                 <configuration>
                     <reportVersion>2.10.0</reportVersion>
                     <allureDownloadUrl>https://repo.maven.apache.org/maven2/io/qameta/allure/allure-commandline/2.10.0/allure-commandline-2.10.0.zip</allureDownloadUrl>
-                    <resultsDirectory>allure-results</resultsDirectory>
-                    <reportDirectory>target/allure-reports</reportDirectory>
+                    <reportDirectory>${project.build.directory}\allure-reports</reportDirectory>
                 </configuration>
             </plugin>
 
@@ -83,22 +86,16 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/junit/junit -->
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.13.2</version>
-            <scope>test</scope>
-        </dependency>
 
 
-        <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-junit -->
+        <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-testng -->
         <dependency>
             <groupId>io.cucumber</groupId>
-            <artifactId>cucumber-junit</artifactId>
+            <artifactId>cucumber-testng</artifactId>
             <version>6.10.2</version>
             <scope>test</scope>
         </dependency>
+
 
         <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-java -->
         <dependency>
