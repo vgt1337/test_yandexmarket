@@ -14,7 +14,5 @@ public class MainTest extends Tests
         goToComputersPage();
         goToNotebooksPage();
         applyFilter();
-
-        PageManager.waitSomeInterval(10);
     }
 }

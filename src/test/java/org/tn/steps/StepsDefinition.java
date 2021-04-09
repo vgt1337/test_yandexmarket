@@ -43,7 +43,6 @@ public class StepsDefinition extends Tests
     public void applyFilterNotebookModelPrestigio(String model)
     {
         applyNotebookModelFilter(model);
-        PageManager.waitSomeInterval(10);
         CloseDriver();
     }
 }
