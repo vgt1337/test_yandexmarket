@@ -239,4 +239,24 @@ public class PageElementsManager extends Driver
             return null;
         }
     }
+
+    public ArrayList<WebElement> listOfElements(By locator)
+    {
+        try
+        {
+            ArrayList<WebElement> list = new ArrayList<WebElement>();
+
+            var listWebElement = Driver.webDriver.findElements(locator);
+
+            for(var i : listWebElement)
+            {
+                list.add(i);
+            }
+            return list;
+        }
+        catch (StaleElementReferenceException ex)
+        {
+            return null;
+        }
+    }
 }

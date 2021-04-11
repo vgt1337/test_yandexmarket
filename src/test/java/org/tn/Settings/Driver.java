@@ -7,6 +7,8 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 
+import java.util.ArrayList;
+
 public class Driver
 {
     public static WebDriver webDriver;
@@ -34,5 +36,16 @@ public class Driver
     public void CloseDriver()
     {
         webDriver.quit();
+    }
+
+    public void CloseWindow()
+    {
+        webDriver.close();
+    }
+
+    public void SwithcWindow(Integer windownumber)
+    {
+        ArrayList<String> tabs = new ArrayList<String> (Driver.webDriver.getWindowHandles());
+        webDriver.switchTo().window(tabs.get(windownumber));
     }
 }

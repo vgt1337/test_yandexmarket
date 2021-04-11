@@ -79,4 +79,12 @@ public class StepsDefinition extends Tests
         sortedListOfNotebooks();
         mapOfNotebooks();
     }
+
+    @Test(dependsOnMethods = "checkDifferencePrice")
+    @Step("Сравнение блоков 'Питание' двух ноутбуков")
+    @And("Check Equal Of Two Notebooks")
+    public void checkEqualOfTwoNotebooks()
+    {
+        equalOfTwoNotebooks();
+    }
 }

@@ -7,4 +7,5 @@ Feature: Проведение UI-тестирования Яндекс Марк�
     And Apply Filter Model "model1", "model2"
     And Apply Filter Color "color1", "color2"
     And Check Difference Price "low", "high"
+    And Check Equal Of Two Notebooks
 

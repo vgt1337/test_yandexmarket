@@ -2,9 +2,11 @@ package org.tn.PageObject;
 
 import io.cucumber.java.mn.Харин;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.tn.Methods.PageManager;
+import org.tn.Settings.Driver;
 import org.tn.Settings.NotebookFilterSpecifications;
 
 import java.util.ArrayList;
@@ -51,6 +53,9 @@ public class NotebookFilterPageObject extends PageManager
 
     @FindBy(xpath = "//div[@data-tid='af159d08']")
     private WebElement loadingMark;
+
+    @FindBy(xpath = "//div[@class='b_2TiXwODAcc']/a")
+    private WebElement allСharacteristicsButton;
 
     public void applyTillPriceFilter(String price)
     {
@@ -137,5 +142,18 @@ public class NotebookFilterPageObject extends PageManager
     public ArrayList<String> notebooksList()
     {
         return listOfTextElements(nameOfFirstInQueueList);
+    }
+
+    public void goToNotebooksListOfElements(Integer count)
+    {
+
+        var list = listOfElements(nameOfFirstInQueueList);
+        WebElement element = list.get(count);
+        waitAndClickElement(element, 10);
+
+        ArrayList<String> tabs = new ArrayList<String> (Driver.webDriver.getWindowHandles());
+        SwithcWindow(1);
+
+        waitAndClickElement(allСharacteristicsButton, 10);
     }
 }
