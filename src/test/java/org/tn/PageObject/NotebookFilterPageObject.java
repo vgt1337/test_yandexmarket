@@ -7,6 +7,8 @@ import org.openqa.selenium.support.FindBy;
 import org.tn.Methods.PageManager;
 import org.tn.Settings.NotebookFilterSpecifications;
 
+import java.util.ArrayList;
+
 public class NotebookFilterPageObject extends PageManager
 {
 
@@ -31,15 +33,24 @@ public class NotebookFilterPageObject extends PageManager
     private final By blackColorButton = By.xpath("//span[@style='"+ NotebookFilterSpecifications.BlackColor[0] +"']/parent::div/parent::label");
     private final By blackColorFilterCheckButton = By.xpath("//div[@data-tid='b0f6317d']/descendant:: span[contains(text(), '"+NotebookFilterSpecifications.BlackColor[2]+"')]");
 
+    @FindBy(xpath = "//button[@class='b_hLFQgGdG9d b_3YbI1T0fRW b_2-RRRko_cC b_tsRVwTUEda b_J-RVT98dW- _brandTheme_default']")
+    private WebElement priceQueueButton;
 
-    public void applyFilter()
-    {
-        applyTillPriceFilter(NotebookFilterSpecifications.TillPrice);
-        for (String i:NotebookFilterSpecifications.ModelsName)
-        {
-            applyNotebookModelFilter(i);
-        }
-    }
+    @FindBy(xpath = "//li/descendant::span[contains(text(),'Сначала подешевле')]")
+    private WebElement lowPriceQueueButton;
+
+    @FindBy(xpath = "//li/descendant::span[contains(text(),'Сначала подороже')]")
+    private WebElement highPriceQueueButton;
+
+    @FindBy(xpath = "//div[@data-tid='2bd11028 e16f1c46']/descendant::span[@data-tid='6a41b9c2 3b85e3a2']")
+    private WebElement priceOfFirstInQueueField;
+
+    @FindBy(xpath = "//div[@data-tid='2bd11028 e16f1c46']/descendant::div[@class='b_3bNl7A8hOl b_rDpH_6iq3d']/descendant::span")
+    private WebElement nameOfFirstInQueueField;
+    private final By nameOfFirstInQueueList = By.xpath("//div[@data-tid='2bd11028 e16f1c46']/descendant::div[@class='b_3bNl7A8hOl b_rDpH_6iq3d']/descendant::span");
+
+    @FindBy(xpath = "//div[@data-tid='af159d08']")
+    private WebElement loadingMark;
 
     public void applyTillPriceFilter(String price)
     {
@@ -91,5 +102,40 @@ public class NotebookFilterPageObject extends PageManager
     public void checkFilter(By locator, Integer seconds)
     {
         waitLocatorClickable(locator, seconds);
+    }
+
+    public void applyPriceQueue(String queue)
+    {
+        waitAndClickElement(priceQueueButton, 10);
+        switch (queue)
+        {
+            case ("low"):
+                waitAndClickElement(lowPriceQueueButton, 10);
+                break;
+            case ("high"):
+                waitAndClickElement(highPriceQueueButton, 10);
+                break;
+        }
+    }
+
+    public Boolean checkLoading()
+    {
+        waitElementVisible(loadingMark, 5);
+        return waitElementStaleness(loadingMark, 2);
+    }
+
+    public String getNameFirstNotebook()
+    {
+        return getTextElement(nameOfFirstInQueueField);
+    }
+
+    public String getPriceFirstNotebook()
+    {
+        return getTextElement(priceOfFirstInQueueField);
+    }
+
+    public ArrayList<String> notebooksList()
+    {
+        return listOfTextElements(nameOfFirstInQueueList);
     }
 }

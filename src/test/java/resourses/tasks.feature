@@ -6,4 +6,5 @@ Feature: Проведение UI-тестирования Яндекс Марк�
     Then Apply Filter Price "price"
     And Apply Filter Model "model1", "model2"
     And Apply Filter Color "color1", "color2"
+    And Check Difference Price "low", "high"
 

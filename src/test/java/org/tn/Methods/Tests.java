@@ -1,13 +1,13 @@
 package org.tn.Methods;
-
-import org.openqa.selenium.By;
+import io.cucumber.java.sl.In;
 import org.openqa.selenium.support.PageFactory;
 import org.tn.PageObject.ComputerTechnologyPageObject;
 import org.tn.PageObject.NotebookFilterPageObject;
 import org.tn.PageObject.StartPageObject;
 import org.tn.Settings.Driver;
-import org.tn.Settings.NotebookFilterSpecifications;
 import org.tn.Settings.TestSettings;
+
+import java.util.*;
 
 public class Tests extends PageManager
 {
@@ -46,4 +46,67 @@ public class Tests extends PageManager
         notebookFilterPage.applyNotebookColor(color1);
         notebookFilterPage.applyNotebookColor(color2);
     }
+
+    public void checkDifferencePrice()
+    {
+        String firstNotebookName=null;
+        String secondNotebookName=null;
+        String firstNotebookPrice=null;
+        String secondNotebookPrice=null;
+
+        NotebookFilterPageObject notebookFilterPage = PageFactory.initElements(Driver.webDriver, NotebookFilterPageObject.class);
+        notebookFilterPage.applyPriceQueue("high");
+        if (notebookFilterPage.checkLoading()==true)
+            {
+                firstNotebookName=notebookFilterPage.getNameFirstNotebook();
+                firstNotebookPrice=notebookFilterPage.getPriceFirstNotebook().substring(0, notebookFilterPage.getPriceFirstNotebook().length()-1);
+            }
+        notebookFilterPage.applyPriceQueue("low");
+        if (notebookFilterPage.checkLoading()==true)
+            {
+                secondNotebookName=notebookFilterPage.getNameFirstNotebook();
+                secondNotebookPrice=notebookFilterPage.getPriceFirstNotebook().substring(0, notebookFilterPage.getPriceFirstNotebook().length()-1);
+            }
+
+        System.out.println("Самый дорогой ноутбук: "+firstNotebookName+" его цена: "+firstNotebookPrice);
+        System.out.println("Самый дешевый ноутбук: "+secondNotebookName+" его цена: "+secondNotebookPrice);
+        System.out.println("Разница в цене: "+(Integer.parseInt(firstNotebookPrice.replaceAll("\\s+",""))-Integer.parseInt(secondNotebookPrice.replaceAll("\\s+",""))));
+    }
+
+    public void sortedListOfNotebooks()
+    {
+        ArrayList<String> list = new ArrayList<String>();
+        NotebookFilterPageObject notebookFilterPage = PageFactory.initElements(Driver.webDriver, NotebookFilterPageObject.class);
+
+        list = notebookFilterPage.notebooksList();
+        Collections.sort(list, String.CASE_INSENSITIVE_ORDER);
+
+        System.out.println("Сортировка списка ноутбуков по имени: ");
+        for (String i : list)
+        {
+            System.out.println(i);
+        }
+
+    }
+
+    public void mapOfNotebooks()
+    {
+        NotebookFilterPageObject notebookFilterPage = PageFactory.initElements(Driver.webDriver, NotebookFilterPageObject.class);
+
+        Map<Integer, String> notebooks = new HashMap<Integer, String>();
+        Integer count = 0;
+        for (String i : notebookFilterPage.notebooksList())
+        {
+            notebooks.put(count++, i);
+        }
+
+        System.out.println("Все записи словаря: ");
+        for (Map.Entry<Integer, String> i : notebooks.entrySet())
+        {
+            System.out.println("Ключ: "+i.getKey()+" Значение: "+i.getValue());
+        }
+
+        System.out.println("Самое длинное значение в словаре: "+Collections.max(notebooks.values()));
+    }
+
 }

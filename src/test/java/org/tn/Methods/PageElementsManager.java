@@ -1,11 +1,16 @@
 package org.tn.Methods;
 
+import io.cucumber.java.mk_latn.No;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.tn.Settings.Driver;
 
+import java.lang.reflect.Array;
 import java.time.Duration;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class PageElementsManager extends Driver
 {
@@ -39,6 +44,11 @@ public class PageElementsManager extends Driver
         new WebDriverWait(webDriver, Duration.ofSeconds(seconds)).until(ExpectedConditions.elementToBeClickable(element));
     }
 
+    public void waitElementClickable(WebElement element, Integer seconds)
+    {
+        new WebDriverWait(webDriver, Duration.ofSeconds(seconds)).until(ExpectedConditions.elementToBeClickable(element));
+    }
+
     public void waitLocatorVisible(By locator, Integer seconds)
     {
         new WebDriverWait(Driver.webDriver, Duration.ofSeconds(seconds)).until(ExpectedConditions.visibilityOfElementLocated(locator));
@@ -48,6 +58,18 @@ public class PageElementsManager extends Driver
     public void waitElementVisible(WebElement element, Integer seconds)
     {
         new WebDriverWait(Driver.webDriver, Duration.ofSeconds(seconds)).until(ExpectedConditions.visibilityOf(element));
+    }
+
+    public Boolean waitElementStaleness(WebElement element, Integer seconds)
+    {
+        try
+        {
+            return new WebDriverWait(Driver.webDriver, Duration.ofSeconds(seconds)).until(ExpectedConditions.stalenessOf(element));
+        }
+        catch (Exception ex)
+        {
+            return true;
+        }
     }
 
     public void waitLocatorExists(By locator, Integer seconds )
@@ -183,6 +205,38 @@ public class PageElementsManager extends Driver
         catch (StaleElementReferenceException ex)
         {
             return (findSingleElementAndClear(locator));
+        }
+    }
+
+    public String getTextElement(WebElement element)
+    {
+        try
+        {
+            return element.getText();
+        }
+        catch (StaleElementReferenceException ex)
+        {
+            return null;
+        }
+    }
+
+    public ArrayList<String> listOfTextElements(By locator)
+    {
+        try
+        {
+            ArrayList<String> list = new ArrayList<String>();
+
+            var listWebElement = Driver.webDriver.findElements(locator);
+
+            for(var i : listWebElement)
+            {
+                list.add(getTextElement(i));
+            }
+            return list;
+        }
+        catch (StaleElementReferenceException ex)
+        {
+            return null;
         }
     }
 }

@@ -7,7 +7,7 @@ import org.tn.Methods.PageManager;
 public class ComputerTechnologyPageObject extends PageManager
 {
 
-    @FindBy(xpath = "//div[@class='_3D53RUXFhW']/descendant::div[contains(text(),'Ноутбуки')]/parent::div")
+    @FindBy(xpath = "//div[@class='_3D53RUXFhW']/descendant::div[contains(text(),'Ноутбуки')]/ancestor::div[@class='_3D53RUXFhW']")
     private WebElement notebookButton;
 
 
