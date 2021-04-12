@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<phonebook>
+        <phone>
+                <number id="0">8951123456</number>
+        </phone>
+        <phone>
+                <number id="1">8951124356</number>
+        </phone>
+        <phone>
+                <number id="2">8900003456</number>
+        </phone>
+        <phone>
+                <number id="3">8000001246</number>
+        </phone>
+        <phone>
+                <number id="4">8657678675</number>
+        </phone>
+        <phone>
+                <number id="5">8345324564</number>
+        </phone>
+        <phone>
+                <number id="6">8123456789</number>
+        </phone>
+        <phone>
+                <number id="7">8657678675</number>
+        </phone>
+        <phone>
+                <number id="8">8345324500</number>
+        </phone>
+        <phone>
+                <number id="9">8000000000</number>
+        </phone>
+        <phone>
+                <number id="10">8000000000</number>
+        </phone>
+        <phone>
+                <number id="11">8345324564</number>
+        </phone>
+        <phone>
+                <number id="12">8000000001</number>
+        </phone>
+        <phone>
+                <number id="13">8951123456</number>
+        </phone>
+</phonebook>

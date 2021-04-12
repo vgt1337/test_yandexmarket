@@ -1,0 +1,25 @@
+{
+  "data" :
+  [
+    {"surname" :  "Петров", "name" : "Михаил", "patronymic" : "Павлович"},
+    {"surname" :  "Фамилия", "name" : "Имя", "patronymic" : "Отчество"},
+    {"surname" :  "Савельев", "name" : "Терентий", "patronymic" : "Алишерович"},
+    {"surname" :  "Сидоров", "name" : "Сидр", "patronymic" : "Градусович"},
+    {"surname" :  "Устоев", "name" : "Подрыв", "patronymic" : "Подрывович"},
+    {"surname" :  "Гормонов", "name" : "Разгул", "patronymic" : "Разгулович"},
+    {"surname" :  "Батонов", "name" : "Разрез", "patronymic" : "Разрезович"},
+    {"surname" :  "Морозов", "name" : "Удар", "patronymic" : "Ударович"},
+    {"surname" :  "Патронов", "name" : "Рожок", "patronymic" : "Рожков"},
+    {"surname" :  "Уродов", "name" : "Цирк", "patronymic" : "Циркович"},
+    {"surname" :  "Савельев", "name" : "Терентий", "patronymic" : "Алишерович"},
+    {"surname" :  "Расходов", "name" : "Учет", "patronymic" : "Учетович"},
+    {"surname" :  "Сдоходов", "name" : "Налог", "patronymic" : "Налогович"},
+    {"surname" :  "Допросов", "name" : "Майор", "patronymic" : "Майорович"},
+    {"surname" :  "Запоев", "name" : "Тридня", "patronymic" : "Тридня"},
+    {"surname" :  "Трамваев", "name" : "Ремонт", "patronymic" : "Ремонтович"},
+    {"surname" :  "Батонов", "name" : "Разрез", "patronymic" : "Разрезович"},
+    {"surname" :  "Морозов", "name" : "Удар", "patronymic" : "Ударович"},
+    {"surname" :  "Запоев", "name" : "Тридня", "patronymic" : "Тридня"},
+    {"surname" :  "Петров", "name" : "Михаил", "patronymic" : "Павлович"}
+  ]
+}

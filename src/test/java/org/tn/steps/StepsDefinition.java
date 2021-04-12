@@ -86,5 +86,9 @@ public class StepsDefinition extends Tests
     public void checkEqualOfTwoNotebooks()
     {
         equalOfTwoNotebooks();
+
+        parseJson();
+        parseExcel();
+        parseXML();
     }
 }
