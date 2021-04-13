@@ -26,6 +26,8 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.*;
 import java.util.*;
 
+import static org.tn.Methods.AllureAttachment.addScreenshot;
+
 public class Tests extends PageManager
 {
 
@@ -38,6 +40,7 @@ public class Tests extends PageManager
     {
         StartPageObject startPage = PageFactory.initElements(Driver.webDriver, StartPageObject.class);
         startPage.goToComputersPage();
+        addScreenshot();
     }
 
     public void goToNotebooksPage()
@@ -72,13 +75,13 @@ public class Tests extends PageManager
         String secondNotebookPrice=null;
 
         NotebookFilterPageObject notebookFilterPage = PageFactory.initElements(Driver.webDriver, NotebookFilterPageObject.class);
-        notebookFilterPage.applyPriceQueue("low");
+        notebookFilterPage.applyPriceQueue("high");
         if (notebookFilterPage.checkLoading()==true)
             {
                 firstNotebookName=notebookFilterPage.getNameFirstNotebook();
                 firstNotebookPrice=notebookFilterPage.getPriceFirstNotebook().substring(0, notebookFilterPage.getPriceFirstNotebook().length()-1);
             }
-        notebookFilterPage.applyPriceQueue("high");
+        notebookFilterPage.applyPriceQueue("low");
         if (notebookFilterPage.checkLoading()==true)
             {
                 secondNotebookName=notebookFilterPage.getNameFirstNotebook();
@@ -87,7 +90,7 @@ public class Tests extends PageManager
 
         System.out.println("Самый дорогой ноутбук: "+firstNotebookName+" его цена: "+firstNotebookPrice);
         System.out.println("Самый дешевый ноутбук: "+secondNotebookName+" его цена: "+secondNotebookPrice);
-        System.out.println("Разница в цене: "+(Integer.parseInt(secondNotebookPrice.replaceAll("\\s+",""))- Integer.parseInt(firstNotebookPrice.replaceAll("\\s+",""))));
+        System.out.println("Разница в цене: "+(Integer.parseInt(firstNotebookPrice.replaceAll("\\s+","")) - Integer.parseInt(secondNotebookPrice.replaceAll("\\s+",""))));
     }
 
     public void sortedListOfNotebooks()

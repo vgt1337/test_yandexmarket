@@ -51,7 +51,7 @@ public class NotebookFilterPageObject extends PageManager
     private WebElement nameOfFirstInQueueField;
     private final By nameOfFirstInQueueList = By.xpath("//div[@data-tid='2bd11028 e16f1c46']/descendant::div[@class='b_3bNl7A8hOl b_rDpH_6iq3d']/descendant::span");
 
-    @FindBy(xpath = "//div[@data-tid='af159d08']")
+    @FindBy(xpath = "//span[@data-tid='2905e1c2']")
     private WebElement loadingMark;
 
     @FindBy(xpath = "//div[@class='b_2TiXwODAcc']/a")

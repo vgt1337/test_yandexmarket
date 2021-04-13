@@ -12,7 +12,7 @@ public class NotebookDetailCharacteristics extends PageManager
 {
     private final By notebookPowerElements = By.xpath("//div[@data-tid='b0ee0d2c']/descendant::h3[contains(text(),'Питание')]/following-sibling::div/descendant::div[@class='b_jgixRQsL0c']/child::span");
 
-    @FindBy(xpath = "//div[@data-tid='f4736048']")
+    @FindBy(xpath = "//div[@data-tid='b85f63a7']")
     private WebElement firstPopUpButton;
 
     @FindBy(xpath = "//div[@class='b_3yqfKNY_vn']/child::span")
