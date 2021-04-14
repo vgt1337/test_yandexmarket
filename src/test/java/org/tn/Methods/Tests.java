@@ -20,6 +20,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+import resourses.PathFileToParse;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -164,7 +165,7 @@ public class Tests extends PageManager
 
     public void parseJson()
     {
-        String filePath = "C:\\Users\\vgt_\\IdeaProjects\\test_yandexmarket\\src\\test\\java\\org\\tn\\Settings\\json.json";
+        String filePath = PathFileToParse.JsonParse;
         System.out.println("Парсинг JSON");
         try
         {
@@ -239,7 +240,7 @@ public class Tests extends PageManager
         Map<Integer, String> phonebook = new HashMap<Integer, String>();
         try {
 
-            File file = new File("C:\\Users\\vgt_\\IdeaProjects\\test_yandexmarket\\src\\test\\java\\org\\tn\\Settings\\xml.xml");
+            File file = new File(PathFileToParse.XMLParse);
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
             DocumentBuilder db = dbf.newDocumentBuilder();
             Document doc = db.parse(file);
@@ -303,7 +304,7 @@ public class Tests extends PageManager
         XSSFWorkbook workBook = null;
         try
         {
-            inputStream = new FileInputStream("C:\\Users\\vgt_\\IdeaProjects\\test_yandexmarket\\src\\test\\java\\org\\tn\\Settings\\excel.xlsx");
+            inputStream = new FileInputStream(PathFileToParse.ExcelParse);
             workBook = new XSSFWorkbook(inputStream);
         }
         catch (IOException e)
@@ -355,5 +356,18 @@ public class Tests extends PageManager
         {
             System.out.println(a);
         }
+    }
+
+    public Boolean checkFiles()
+    {
+        File json = new File(PathFileToParse.JsonParse);
+        File xml = new File(PathFileToParse.XMLParse);
+        File excel = new File(PathFileToParse.ExcelParse);
+        if (json.isFile() == true && xml.isFile() == true && excel.isFile() == true)
+        {
+            return true;
+        }
+        else
+            return false;
     }
 }

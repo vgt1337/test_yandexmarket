@@ -6,8 +6,8 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.qameta.allure.Description;
 import io.qameta.allure.Step;
+import org.testng.Assert;
 import org.testng.annotations.*;
 import org.tn.Methods.Tests;
 import org.tn.Settings.NotebookFilterSpecifications;
@@ -89,6 +89,41 @@ public class StepsDefinition extends Tests
 
         parseJson();
         parseExcel();
+        parseXML();
+    }
+
+    @Test(priority = 2)
+    @Step("Поиск трех файлов: json, xml, excel")
+    @When("Three Files Exist")
+    public void threeFilesExist()
+    {
+        if (!checkFiles())
+        {
+            Assert.fail("Файл/ы не найден/ы!");
+        }
+    }
+
+    @Test(dependsOnMethods = "threeFilesExist", priority = 3)
+    @Step("Парсинг Json")
+    @Then("Json Parse")
+    public void jsonParse()
+    {
+        parseJson();
+    }
+
+    @Test(dependsOnMethods = "threeFilesExist", priority = 4)
+    @Step("Парсинг Excel")
+    @And("Excel Parse")
+    public void excelParse()
+    {
+        parseExcel();
+    }
+
+    @Test(dependsOnMethods = "threeFilesExist", priority = 5)
+    @Step("Парсинг XML")
+    @And("xml Parse")
+    public void xmlParse()
+    {
         parseXML();
     }
 }

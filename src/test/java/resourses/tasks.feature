@@ -9,3 +9,9 @@ Feature: Проведение UI-тестирования Яндекс Марк�
     And Check Difference Price "low", "high"
     And Check Equal Of Two Notebooks
 
+  Scenario: Парсинг файлов
+    When Three Files Exist
+    Then Json Parse
+    And Excel Parse
+    And xml Parse
+
